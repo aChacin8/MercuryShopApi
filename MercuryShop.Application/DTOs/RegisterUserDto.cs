@@ -1,0 +1,12 @@
+namespace MercuryShop.Application.DTOs
+{
+    public class RegisterUserDto
+    {
+        public required string FirstName { get; init; }
+        public required string LastName { get; init; }
+        public required string Email { get; init; }
+        public required string Password { get; init; }
+        public string?  PhoneNumber { get; init; }
+        public string? Address { get; init; }
+    }
+}
