@@ -8,12 +8,12 @@ namespace MercuryShop.Domain.Entities
         public required string Email { get; set; }
         public required string EmailHash { get; set; }
         public required string PasswordHash { get; set; }
-        public string? PhoneNumbre { get; set; }
+        public string? PhoneNumber { get; set; }
         public string? Address { get; set; }
 
         private User () {}
 
-        public User (string firstName, string lastName, string email, string emailHash, string passwordHash)
+        public User (string firstName, string lastName, string email, string emailHash, string passwordHash, string? phoneNumber, string? adress)
         {
             Id = Guid.NewGuid();
             FirstName = firstName;
@@ -21,6 +21,8 @@ namespace MercuryShop.Domain.Entities
             Email = email;
             EmailHash = emailHash;
             PasswordHash = passwordHash;
+            PhoneNumber = phoneNumber;
+            Address = adress;
         }
     }
 }
