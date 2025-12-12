@@ -2,7 +2,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MercuryShop.Domain\MercuryShop.Domain.csproj" />
-    <ProjectReference Include="..\MercuryShop.Infraestructure\MercuryShop.Infraestructure.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
