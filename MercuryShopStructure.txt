@@ -1,0 +1,28 @@
+MercuryShop/
+│   .gitignore
+│   MercuryShop.sln
+│
+├── MercuryShop.Api/
+│   ├── Program.cs
+│   ├── appsettings.json
+│   ├── appsettings.Development.json
+│   └── MercuryShop.Api.csproj
+│
+├── MercuryShop.Application/
+│   ├── Interfaces/
+│   ├── DTOs/
+│   ├── Commands/
+│   └── MercuryShop.Application.csproj
+│
+├── MercuryShop.Domain/
+│   ├── Entities/
+│   ├── ValueObjects/
+│   ├── Repositories/
+│   └── MercuryShop.Domain.csproj
+│
+└── MercuryShop.Infrastructure/
+    ├── Data/
+    │   └── MercuryDbContext.cs
+    ├── Repositories/
+    ├── Configurations/
+    └── MercuryShop.Infrastructure.csproj
