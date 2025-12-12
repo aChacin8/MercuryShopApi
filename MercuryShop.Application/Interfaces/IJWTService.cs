@@ -2,7 +2,7 @@ using MercuryShop.Application.DTOs;
 
 namespace MercuryShop.Application.Interfaces
 {
-    public interface IJWTService
+    public interface IJwtService
     {
         string GenerateToken (UserIdentity userIdentity);
     }
