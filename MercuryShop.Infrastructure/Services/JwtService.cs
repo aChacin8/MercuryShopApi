@@ -1,0 +1,49 @@
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+
+using MercuryShop.Application.Interfaces;
+using MercuryShop.Application.DTOs;
+
+namespace MercuryShop.Infrastructure.Services
+{
+    public class JwtService : IJwtService
+    {
+        private readonly string _secretKey;
+        private readonly string _issuer;
+        private readonly string _audience;
+        private readonly int _expiryMinutes;
+
+        public JwtService (IConfiguration configuration)
+        {
+            _secretKey = configuration["Jwt:SecretKey"]!;
+            _issuer = configuration["Jwt:Issuer"]!;
+            _audience = configuration["Jwt:Audience"]!;
+            _expiryMinutes = int.Parse(configuration["Jwt:ExpiryMinutes"]!);
+        }
+
+        public string GenerateToken (UserIdentity userIdentity)
+        {
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
+            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256 );
+
+            var claims = new[]
+            {
+                new Claim(JwtRegisteredClaimNames.Sub, userIdentity.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, userIdentity.Email),
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+            };
+
+            var token = new JwtSecurityToken(
+                issuer: _issuer,
+                audience: _audience,
+                claims: claims,
+                expires: DateTime.UtcNow.AddMinutes(_expiryMinutes),
+                signingCredentials: credentials 
+            );
+            return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+    }
+}
