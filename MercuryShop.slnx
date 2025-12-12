@@ -2,5 +2,5 @@
   <Project Path="MercuryShop.Api/MercuryShop.Api.csproj" />
   <Project Path="MercuryShop.Application/MercuryShop.Application.csproj" />
   <Project Path="MercuryShop.Domain/MercuryShop.Domain.csproj" />
-  <Project Path="MercuryShop.Infraestructure/MercuryShop.Infrastructure.csproj" />
+  <Project Path="MercuryShop.Infrastructure/MercuryShop.Infrastructure.csproj" />
 </Solution>
