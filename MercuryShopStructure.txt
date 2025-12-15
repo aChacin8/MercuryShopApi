@@ -1,28 +1,51 @@
 MercuryShop/
-│   .gitignore
-│   MercuryShop.sln
+│
+├── MercuryShop.sln
 │
 ├── MercuryShop.Api/
-│   ├── Program.cs
+│   ├── Controllers/
+│   │   └── UsersController.cs
 │   ├── appsettings.json
 │   ├── appsettings.Development.json
-│   └── MercuryShop.Api.csproj
+│   ├── Program.cs
+│   ├── MercuryShop.Api.csproj
+│   └── Properties/
 │
 ├── MercuryShop.Application/
-│   ├── Interfaces/
 │   ├── DTOs/
-│   ├── Commands/
+│   │   ├── RegisterUserDto.cs
+│   │   └── LoginUserDto.cs
+│   │
+│   ├── Interfaces/
+│   │   ├── IPasswordHasher.cs
+│   │   ├── IUserRepository.cs
+│   │   └── IJwtService.cs
+│   │
+│   ├── Services/
+│   │   └── UserService.cs
+│   │
 │   └── MercuryShop.Application.csproj
 │
 ├── MercuryShop.Domain/
 │   ├── Entities/
+│   │   └── User.cs
+│   │
 │   ├── ValueObjects/
-│   ├── Repositories/
+│   │   └── (opcional - por ahora vacío)
+│   │
 │   └── MercuryShop.Domain.csproj
 │
-└── MercuryShop.Infrastructure/
-    ├── Data/
-    │   └── MercuryDbContext.cs
-    ├── Repositories/
-    ├── Configurations/
-    └── MercuryShop.Infrastructure.csproj
+├── MercuryShop.Infrastructure/
+│   ├── Data/
+│   │   └── MercuryShopDbContext.cs
+│   │
+│   ├── Repositories/
+│   │   └── UserRepository.cs
+│   │
+│   ├── Services/
+│   │   ├── PasswordHasher.cs
+│   │   └── JwtService.cs
+│   │
+│   └── MercuryShop.Infrastructure.csproj
+│
+└── .gitignore
