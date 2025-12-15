@@ -1,4 +1,5 @@
 using MercuryShop.Domain.Entities;
+using System.Threading.Tasks;
 
 namespace MercuryShop.Application.Interfaces
 {
