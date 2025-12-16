@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace MercuryShop.Infrastructure.Repositories
 {
-    // public class UserRepository : IUserRepository
-    // {
-    //     private readonly MercuryShopDbContext _context;
+    public class UserRepository : IUserRepository
+    {
+        private readonly MercuryShopDbContext _context;
 
-    //     public UserRepository(MercuryShopDbContext context)
-    //     {
-    //         _context = context;
-    //     }
-    // }
+        public UserRepository(MercuryShopDbContext context)
+        {
+            _context = context;
+        }
+    }
 }
