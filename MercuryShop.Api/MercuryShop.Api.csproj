@@ -10,11 +10,13 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="10.0.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="9.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\MercuryShop.Application\MercuryShop.Application.csproj" />
+    <ProjectReference Include="..\MercuryShop.Infrastructure\MercuryShop.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
