@@ -23,7 +23,7 @@ namespace MercuryShop.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<User?> GetEmail (string email)
+        public async Task<User?> GetByEmailAsync (string email)
         {
             return await _context.Users.SingleOrDefaultAsync(u => u.Email == email); //SingleOrDefault, para mantener unicidad, es decir email unico.
         }

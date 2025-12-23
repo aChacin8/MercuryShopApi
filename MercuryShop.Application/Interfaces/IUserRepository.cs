@@ -8,6 +8,6 @@ namespace MercuryShop.Application.Interfaces
     public interface IUserRepository
     {
         Task AddAsync(User user);
-        Task <User?> GetEmail (string email);
+        Task <User?> GetByEmailAsync (string email);
     }
 }
