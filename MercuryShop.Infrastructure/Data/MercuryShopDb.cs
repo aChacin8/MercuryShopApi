@@ -18,7 +18,7 @@ namespace MercuryShop.Infrastructure.Data
             {
                 entity.ToTable("users");
                 entity.HasKey(u => u.Id);
-                entity.Property(u => u.Id).HasColumnName("user_id");
+                entity.Property(u => u.Id).HasColumnName("user_id").ValueGeneratedOnAdd();
                 entity.Property(u => u.FirstName).IsRequired().HasMaxLength(100).HasColumnName("first_name");
                 entity.Property(u => u.LastName).IsRequired().HasMaxLength(100).HasColumnName("last_name");
                 entity.Property(u => u.Email).IsRequired().HasMaxLength(100).HasColumnName("email");
