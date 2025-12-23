@@ -4,6 +4,6 @@ namespace MercuryShop.Application.Interfaces
 {
     public interface IJwtService
     {
-        string GenerateToken (UserIdentity userIdentity);
+        string GenerateToken (UserClaims userClaims);
     }
 }
