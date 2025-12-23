@@ -7,7 +7,7 @@ using MercuryShop.Domain.Entities;
 namespace MercuryShop.Api.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/users")]
     public class UsersControllers : ControllerBase
     {
         private readonly IUserService _userService;
