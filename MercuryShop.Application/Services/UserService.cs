@@ -4,22 +4,20 @@ using MercuryShop.Domain.Entities;
 
 namespace MercuryShop.Application.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository; 
         private readonly IPasswordHasher _passwordHash;
         private readonly IJwtService _jwtService;
-        private readonly UserIdentity _userId;
 
-        public UserService(IUserRepository userRepository, IPasswordHasher passwordHash, IJwtService jwtService, UserIdentity userId)
+        public UserService(IUserRepository userRepository, IPasswordHasher passwordHash, IJwtService jwtService)
         {
             _userRepository = userRepository;
             _passwordHash = passwordHash;
             _jwtService = jwtService; 
-            _userId = userId;
         }
 
-        public async Task<string> RegisterUser(RegisterUserDto registerUserDto)
+        public async Task RegisterUser(RegisterUserDto registerUserDto)
         {
             var existing = await _userRepository.GetByEmailAsync(registerUserDto.Email);
 
@@ -31,8 +29,6 @@ namespace MercuryShop.Application.Services
             var user = new User (registerUserDto.FirstName, registerUserDto.LastName, registerUserDto.Email, hashedPassword, registerUserDto.Address, registerUserDto.PhoneNumber);
 
             await _userRepository.AddAsync(user);
-
-            return _jwtService.GenerateToken(_userId);
         }
 
         public async Task<string> LoginUser (LoginUserDto loginUserDto)
@@ -47,7 +43,12 @@ namespace MercuryShop.Application.Services
             if(!isValid)
                 throw new UnauthorizedAccessException ("Invalid Credentials");
             
-            return _jwtService.GenerateToken(_userId);
+            var identity = new UserClaims
+            {
+                Id = user.Id,
+                Email = user.Email
+            };
+            return _jwtService.GenerateToken(identity);
         }
     }
 }
