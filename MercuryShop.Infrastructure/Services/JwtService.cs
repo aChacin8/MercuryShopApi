@@ -24,15 +24,15 @@ namespace MercuryShop.Infrastructure.Services
             _expiryMinutes = int.Parse(configuration["Jwt:ExpiryMinutes"]!);
         }
 
-        public string GenerateToken (UserIdentity userIdentity)
+        public string GenerateToken (UserClaims userClaims)
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_secretKey));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256 );
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, userIdentity.Id.ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, userIdentity.Email),
+                new Claim(JwtRegisteredClaimNames.Sub, userClaims.Id.ToString()),
+                new Claim(JwtRegisteredClaimNames.Email, userClaims.Email),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
 
