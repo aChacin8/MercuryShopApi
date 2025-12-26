@@ -30,9 +30,6 @@ MercuryShop/
 │   ├── Entities/
 │   │   └── User.cs
 │   │
-│   ├── ValueObjects/
-│   │   └── (opcional - por ahora vacío)
-│   │
 │   └── MercuryShop.Domain.csproj
 │
 ├── MercuryShop.Infrastructure/
