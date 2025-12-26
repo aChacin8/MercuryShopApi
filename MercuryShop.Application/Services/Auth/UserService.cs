@@ -17,7 +17,7 @@ namespace MercuryShop.Application.Services.Auth
             _jwtService = jwtService; 
         }
 
-        public async Task RegisterUser(RegisterUserDto registerUserDto)
+        public async Task<string?>RegisterUser(RegisterUserDto registerUserDto)
         {
             var existing = await _userRepository.GetByEmailAsync(registerUserDto.Email);
 
@@ -26,9 +26,11 @@ namespace MercuryShop.Application.Services.Auth
 
             var hashedPassword = _passwordHash.HashPassword(registerUserDto.Password);
 
-            var user = new User (registerUserDto.FirstName, registerUserDto.LastName, registerUserDto.Email, hashedPassword, registerUserDto.Address, registerUserDto.PhoneNumber);
+            var user = new User (registerUserDto.FirstName, registerUserDto.LastName, registerUserDto.Email, hashedPassword, registerUserDto.PhoneNumber, registerUserDto.Address);
 
             await _userRepository.AddAsync(user);
+
+            return user.ToString();
         }
 
         public async Task<string> LoginUser (LoginUserDto loginUserDto)
@@ -51,9 +53,38 @@ namespace MercuryShop.Application.Services.Auth
             return _jwtService.GenerateToken(identity);
         }
 
-        public async Task <string> UpdateUser(UpdateUserDto)
+        public async Task <string?> UpdateUser(UpdateUserDto updateUserDto)
         {
-            var user = await _userRepository
+            var user = await _userRepository.GetByIdAsync(updateUserDto.Id);
+
+            if(user == null)
+                throw new Exception ("User not found");
+            
+            var isValidPassword = _passwordHash.VerifyPassword(updateUserDto.CurrentPassword!, user.PasswordHash);
+            if (!isValidPassword)
+                throw new UnauthorizedAccessException ("Invalid Password");
+
+            if (!string.IsNullOrWhiteSpace(updateUserDto.FirstName))
+                user.UpdateFirstName(updateUserDto.FirstName);
+            
+            if (!string.IsNullOrWhiteSpace(updateUserDto.LastName))
+                user.UpdateLastName(updateUserDto.LastName);
+
+            if (!string.IsNullOrWhiteSpace(updateUserDto.PhoneNumber))
+                user.UpdatePhoneNumber(updateUserDto.PhoneNumber);
+
+            if (!string.IsNullOrWhiteSpace(updateUserDto.Address))
+                user.UpdateAddress(updateUserDto.Address);
+            
+            if (!string.IsNullOrWhiteSpace(updateUserDto.NewPassword))
+            {
+                var newPasswordHash = _passwordHash.HashPassword(updateUserDto.NewPassword);
+                user.UpdatePassword(newPasswordHash);
+            }
+
+            await _userRepository.UpdateAsync(user);
+
+            return user.ToString();
         }
     }
 }
