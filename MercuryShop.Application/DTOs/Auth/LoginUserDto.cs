@@ -1,4 +1,4 @@
-namespace MercuryShop.Application.DTOs
+namespace MercuryShop.Application.DTOs.Auth
 {
     public class LoginUserDto
     {
