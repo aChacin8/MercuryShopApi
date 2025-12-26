@@ -5,7 +5,9 @@ namespace MercuryShop.Application.Interfaces.Auth
 {
     public interface IUserService
     {
-        Task RegisterUser(RegisterUserDto registerUserDto);
+        Task<string?> RegisterUser(RegisterUserDto registerUserDto);
         Task<string> LoginUser (LoginUserDto loginUserDto);
+
+        Task <string?> UpdateUser (UpdateUserDto updateUserDto);
     }
 }
