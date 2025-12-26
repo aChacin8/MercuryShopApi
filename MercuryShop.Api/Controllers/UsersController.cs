@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 
-using MercuryShop.Application.Interfaces;
-using MercuryShop.Application.DTOs;
+using MercuryShop.Application.Interfaces.Auth;
+using MercuryShop.Application.DTOs.Auth;
 using MercuryShop.Domain.Entities;
 
 namespace MercuryShop.Api.Controllers
