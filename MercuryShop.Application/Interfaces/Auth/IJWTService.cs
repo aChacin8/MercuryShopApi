@@ -1,6 +1,6 @@
-using MercuryShop.Application.DTOs;
+using MercuryShop.Application.DTOs.Auth;
 
-namespace MercuryShop.Application.Interfaces
+namespace MercuryShop.Application.Interfaces.Auth
 {
     public interface IJwtService
     {

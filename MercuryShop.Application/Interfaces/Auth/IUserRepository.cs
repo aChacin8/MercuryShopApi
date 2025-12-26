@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using MercuryShop.Domain.Entities;
 
 
-namespace MercuryShop.Application.Interfaces
+namespace MercuryShop.Application.Interfaces.Auth
 {
     public interface IUserRepository
     {

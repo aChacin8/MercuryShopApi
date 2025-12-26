@@ -3,10 +3,10 @@ using System.Threading.Tasks;
 
 using MercuryShop.Domain.Entities;
 using MercuryShop.Infrastructure.Data;
-using MercuryShop.Application.Interfaces;
+using MercuryShop.Application.Interfaces.Auth;
 
 
-namespace MercuryShop.Infrastructure.Repositories
+namespace MercuryShop.Infrastructure.Repositories.Auth
 {
     public class UserRepository : IUserRepository
     {

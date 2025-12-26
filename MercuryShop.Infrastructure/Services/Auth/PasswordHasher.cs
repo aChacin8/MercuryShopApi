@@ -1,7 +1,7 @@
 using BCrypt.Net;
-using MercuryShop.Application.Interfaces;
+using MercuryShop.Application.Interfaces.Auth;
 
-namespace MercuryShop.Infrastructure.Services
+namespace MercuryShop.Infrastructure.Services.Auth
 {
     public class PasswordHasher : IPasswordHasher
     {

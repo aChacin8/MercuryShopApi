@@ -4,10 +4,10 @@ using System.Text;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 
-using MercuryShop.Application.Interfaces;
-using MercuryShop.Application.DTOs;
+using MercuryShop.Application.Interfaces.Auth;
+using MercuryShop.Application.DTOs.Auth;
 
-namespace MercuryShop.Infrastructure.Services
+namespace MercuryShop.Infrastructure.Services.Auth
 {
     public class JwtService : IJwtService
     {

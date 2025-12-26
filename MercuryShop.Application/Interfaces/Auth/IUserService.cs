@@ -1,7 +1,7 @@
-using MercuryShop.Application.DTOs;
-using MercuryShop.Application.Services;
+using MercuryShop.Application.DTOs.Auth;
+using MercuryShop.Application.Services.Auth;
 
-namespace MercuryShop.Application.Interfaces
+namespace MercuryShop.Application.Interfaces.Auth
 {
     public interface IUserService
     {

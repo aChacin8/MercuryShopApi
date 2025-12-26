@@ -1,4 +1,4 @@
-namespace MercuryShop.Application.Interfaces
+namespace MercuryShop.Application.Interfaces.Auth
 {
     public interface IPasswordHasher
     {

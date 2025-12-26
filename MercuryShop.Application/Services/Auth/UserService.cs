@@ -1,8 +1,8 @@
-using MercuryShop.Application.DTOs;
-using MercuryShop.Application.Interfaces;
+using MercuryShop.Application.DTOs.Auth;
+using MercuryShop.Application.Interfaces.Auth;
 using MercuryShop.Domain.Entities;
 
-namespace MercuryShop.Application.Services
+namespace MercuryShop.Application.Services.Auth
 {
     public class UserService : IUserService
     {
@@ -49,6 +49,11 @@ namespace MercuryShop.Application.Services
                 Email = user.Email
             };
             return _jwtService.GenerateToken(identity);
+        }
+
+        public async Task <string> UpdateUser(UpdateUserDto)
+        {
+            var user = await _userRepository
         }
     }
 }
