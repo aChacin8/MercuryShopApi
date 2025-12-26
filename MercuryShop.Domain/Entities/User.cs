@@ -21,5 +21,26 @@ namespace MercuryShop.Domain.Entities
             PhoneNumber = phoneNumber;
             Address = address;
         }
+
+        public void UpdateFirstName(string firstName)
+        {
+            if (string.IsNullOrWhiteSpace(firstName))
+                throw new Exception("First Name is required");  
+            
+            FirstName = firstName;
+        }
+
+        public void UpdateLastName(string lastName)
+        {
+            if (string.IsNullOrWhiteSpace(lastName))
+                throw new Exception("First Name is required");  
+            
+            LastName = lastName;
+        }
+
+        public void UpdatePhoneNumber (string? phoneNumber) => PhoneNumber = phoneNumber;
+        public void UpdateAddress (string? address) => Address = address;
+        public void UpdatePassword (string newPassword) => PasswordHash = newPassword;
+
     }
 }
