@@ -23,6 +23,7 @@ namespace MercuryShop.Api.Controllers
             await _userService.RegisterUser(registerUserDto);
             return Ok(new
             {
+                registerUserDto,
                 message = "User registered succesfully"
             });
         }
@@ -35,6 +36,16 @@ namespace MercuryShop.Api.Controllers
             {
                 token,
                 message = "User login succesfully"
+            });
+        }
+
+        [HttpPatch("update")]
+        public async Task <IActionResult> Update (UpdateUserDto updateUserDto)
+        {
+            await _userService.UpdateUser(updateUserDto);
+            return Ok(new
+            {
+                message = "User Update succesfully"
             });
         }
     }
