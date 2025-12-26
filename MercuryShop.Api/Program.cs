@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-using MercuryShop.Application.Interfaces;
-using MercuryShop.Application.Services;
+using MercuryShop.Application.Interfaces.Auth;
+using MercuryShop.Application.Services.Auth;
 using MercuryShop.Infrastructure.Data;
-using MercuryShop.Infrastructure.Repositories;
-using MercuryShop.Infrastructure.Services;
+using MercuryShop.Infrastructure.Repositories.Auth;
+using MercuryShop.Infrastructure.Services.Auth;
 
 var builder = WebApplication.CreateBuilder(args);
 
